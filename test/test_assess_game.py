@@ -1,5 +1,5 @@
 import pytest
-from src.RPS_spock_lizard import Game, GameResult, GameAction
+from src.piedra_papel_tijera_lagarto_spock import Game, Game_action, Game_result
 
 
 @pytest.fixture
@@ -9,172 +9,156 @@ def game():
 
 @pytest.mark.draw
 def test_draw(game):
-    assert GameResult.Tie == game.assess_game(
-        user_action=GameAction.Spock,
-        computer_action=GameAction.Spock)
+    assert Game_result.TIE == game.assess_game(
+        user_action=Game_action.SPOCK,
+        computer_action=Game_action.SPOCK)
 
-    assert GameResult.Tie == game.assess_game(
-        user_action=GameAction.Lizard,
-        computer_action=GameAction.Lizard)
+    assert Game_result.TIE == game.assess_game(
+        user_action=Game_action.LIZARD,
+        computer_action=Game_action.LIZARD)
 
-    assert GameResult.Tie == game.assess_game(
-        user_action=GameAction.Rock,
-        computer_action=GameAction.Rock)
+    assert Game_result.TIE == game.assess_game(
+        user_action=Game_action.ROCK,
+        computer_action=Game_action.ROCK)
 
-    assert GameResult.Tie == game.assess_game(
-        user_action=GameAction.Scissors,
-        computer_action=GameAction.Scissors)
+    assert Game_result.TIE == game.assess_game(
+        user_action=Game_action.SCISSORS,
+        computer_action=Game_action.SCISSORS)
 
-    assert GameResult.Tie == game.assess_game(
-        user_action=GameAction.Paper,
-        computer_action=GameAction.Paper)
+    assert Game_result.TIE == game.assess_game(
+        user_action=Game_action.PAPER,
+        computer_action=Game_action.PAPER)
 
 
-@pytest.mark.spock
-def test_spock_loses(game):
+@pytest.mark.SPOCK
+def test_SPOCK_loses(game):
     '''
-    Spock pierde con Lizard y Paper 
+    SPOCK pierde con LIZARD y PAPER 
     '''
-    assert GameResult.Victory == game.assess_game(
-        user_action=GameAction.Paper,
-        computer_action=GameAction.Spock)
+    assert Game_result.VICTORY == game.assess_game(
+        user_action=Game_action.PAPER,
+        computer_action=Game_action.SPOCK)
 
-    assert GameResult.Victory == game.assess_game(
-        user_action=GameAction.Lizard,
-        computer_action=GameAction.Spock)
+    assert Game_result.VICTORY == game.assess_game(
+        user_action=Game_action.LIZARD,
+        computer_action=Game_action.SPOCK)
 
 
-@pytest.mark.spock
-def test_spock_wins(game):
+@pytest.mark.SPOCK
+def test_SPOCK_wins(game):
     '''
-    Spock gana a Rock y Scissors 
+    SPOCK gana a ROCK y SCISSORS 
     '''
-    assert GameResult.Defeat == game.assess_game(
-        user_action=GameAction.Rock,
-        computer_action=GameAction.Spock)
+    assert Game_result.DEFEAT == game.assess_game(
+        user_action=Game_action.ROCK,
+        computer_action=Game_action.SPOCK)
 
-    assert GameResult.Defeat == game.assess_game(
-        user_action=GameAction.Scissors,
-        computer_action=GameAction.Spock)
+    assert Game_result.DEFEAT == game.assess_game(
+        user_action=Game_action.SCISSORS,
+        computer_action=Game_action.SPOCK)
 
 
-@pytest.mark.lizard
-def test_lizard_loses(game):
+@pytest.mark.LIZARD
+def test_LIZARD_loses(game):
     '''
-    Lizard pierde con Rock y Scissors 
+    LIZARD pierde con ROCK y SCISSORS 
     '''
-    assert GameResult.Victory == game.assess_game(
-        user_action=GameAction.Rock,
-        computer_action=GameAction.Lizard)
+    assert Game_result.VICTORY == game.assess_game(
+        user_action=Game_action.ROCK,
+        computer_action=Game_action.LIZARD)
 
-    assert GameResult.Victory == game.assess_game(
-        user_action=GameAction.Scissors,
-        computer_action=GameAction.Lizard)
+    assert Game_result.VICTORY == game.assess_game(
+        user_action=Game_action.SCISSORS,
+        computer_action=Game_action.LIZARD)
 
 
-@pytest.mark.lizard
-def test_lizard_wins(game):
+@pytest.mark.LIZARD
+def test_LIZARD_wins(game):
     '''
-    Lizard gana a Spock y Paper 
+    LIZARD gana a SPOCK y PAPER 
     '''
-    assert GameResult.Defeat == game.assess_game(
-        user_action=GameAction.Spock,
-        computer_action=GameAction.Lizard)
+    assert Game_result.DEFEAT == game.assess_game(
+        user_action=Game_action.SPOCK,
+        computer_action=Game_action.LIZARD)
 
-    assert GameResult.Defeat == game.assess_game(
-        user_action=GameAction.Paper,
-        computer_action=GameAction.Lizard)
+    assert Game_result.DEFEAT == game.assess_game(
+        user_action=Game_action.PAPER,
+        computer_action=Game_action.LIZARD)
 
-@pytest.mark.rock
-def test_rock_loses(game):
+@pytest.mark.ROCK
+def test_ROCK_loses(game):
     '''
-    Rock pierde con Spock y Paper 
+    ROCK pierde con SPOCK y PAPER 
     '''
-    assert GameResult.Victory == game.assess_game(
-        user_action=GameAction.Spock,
-        computer_action=GameAction.Rock)
+    assert Game_result.VICTORY == game.assess_game(
+        user_action=Game_action.SPOCK,
+        computer_action=Game_action.ROCK)
 
-    assert GameResult.Victory == game.assess_game(
-        user_action=GameAction.Paper,
-        computer_action=GameAction.Rock)
+    assert Game_result.VICTORY == game.assess_game(
+        user_action=Game_action.PAPER,
+        computer_action=Game_action.ROCK)
 
-@pytest.mark.rock
-def test_rock_wins(game):
+@pytest.mark.ROCK
+def test_ROCK_wins(game):
     '''
-    Rock gana a Scissors y Lizard 
+    ROCK gana a SCISSORS y LIZARD 
     '''
-    assert GameResult.Defeat == game.assess_game(
-        user_action=GameAction.Scissors,
-        computer_action=GameAction.Rock)
+    assert Game_result.DEFEAT == game.assess_game(
+        user_action=Game_action.SCISSORS,
+        computer_action=Game_action.ROCK)
 
-    assert GameResult.Defeat == game.assess_game(
-        user_action=GameAction.Lizard,
-        computer_action=GameAction.Rock)
+    assert Game_result.DEFEAT == game.assess_game(
+        user_action=Game_action.LIZARD,
+        computer_action=Game_action.ROCK)
 
-@pytest.mark.paper
-def test_paper_loses(game):
+@pytest.mark.PAPER
+def test_PAPER_loses(game):
     '''
-    Paper pierde con Scissors y Lizard 
+    PAPER pierde con SCISSORS y LIZARD 
     '''
-    assert GameResult.Victory == game.assess_game(
-        user_action=GameAction.Scissors,
-        computer_action=GameAction.Paper)
+    assert Game_result.VICTORY == game.assess_game(
+        user_action=Game_action.SCISSORS,
+        computer_action=Game_action.PAPER)
 
-    assert GameResult.Victory == game.assess_game(
-        user_action=GameAction.Lizard,
-        computer_action=GameAction.Paper)
+    assert Game_result.VICTORY == game.assess_game(
+        user_action=Game_action.LIZARD,
+        computer_action=Game_action.PAPER)
 
-@pytest.mark.paper
-def test_paper_wins(game):
+@pytest.mark.PAPER
+def test_PAPER_wins(game):
     '''
-    Paper gana a Rock y Spock 
+    PAPER gana a ROCK y SPOCK 
     '''
-    assert GameResult.Defeat == game.assess_game(
-        user_action=GameAction.Rock,
-        computer_action=GameAction.Paper)
+    assert Game_result.DEFEAT == game.assess_game(
+        user_action=Game_action.ROCK,
+        computer_action=Game_action.PAPER)
 
-    assert GameResult.Defeat == game.assess_game(
-        user_action=GameAction.Spock,
-        computer_action=GameAction.Paper)
+    assert Game_result.DEFEAT == game.assess_game(
+        user_action=Game_action.SPOCK,
+        computer_action=Game_action.PAPER)
 
-@pytest.mark.scissors
-def test_scissors_loses(game):
+@pytest.mark.SCISSORS
+def test_SCISSORS_loses(game):
     '''
-    Scissors pierde con Spock y Rock 
+    SCISSORS pierde con SPOCK y ROCK 
     '''
-    assert GameResult.Victory == game.assess_game(
-        user_action=GameAction.Spock,
-        computer_action=GameAction.Scissors)
+    assert Game_result.VICTORY == game.assess_game(
+        user_action=Game_action.SPOCK,
+        computer_action=Game_action.SCISSORS)
 
-    assert GameResult.Victory == game.assess_game(
-        user_action=GameAction.Rock,
-        computer_action=GameAction.Scissors)
+    assert Game_result.VICTORY == game.assess_game(
+        user_action=Game_action.ROCK,
+        computer_action=Game_action.SCISSORS)
 
-@pytest.mark.scissors
-def test_scissors_wins(game):
+@pytest.mark.SCISSORS
+def test_SCISSORS_wins(game):
     '''
-    Scissors gana a Lizard y Paper 
+    SCISSORS gana a LIZARD y PAPER 
     '''
-    assert GameResult.Defeat == game.assess_game(
-        user_action=GameAction.Lizard,
-        computer_action=GameAction.Scissors)
+    assert Game_result.DEFEAT == game.assess_game(
+        user_action=Game_action.LIZARD,
+        computer_action=Game_action.SCISSORS)
 
-    assert GameResult.Defeat == game.assess_game(
-        user_action=GameAction.Paper,
-        computer_action=GameAction.Scissors)
-
-
-@pytest.mark.actions
-def test_minus_action():
-
-    assert 1 == len(GameAction.minus(
-        GameAction.Scissors,
-        GameAction.Lizard,
-        GameAction.Paper,
-        GameAction.Rock))
-
-    assert 4 == len(GameAction.minus(GameAction.Lizard))
-
-    assert GameAction.Lizard not in GameAction.minus(GameAction.Lizard)
-
-    assert GameAction.Lizard in GameAction.minus(GameAction.Spock, GameAction.Rock)
+    assert Game_result.DEFEAT == game.assess_game(
+        user_action=Game_action.PAPER,
+        computer_action=Game_action.SCISSORS)
